@@ -17,15 +17,15 @@ const WeatherCard = () => {
         .then(data => setWeatherData(data));
     });
 
-    const fadeTimeout = setTimeout(() => setFade(true), 30000);  // Set fade state to true after 30 seconds
-    return () => clearTimeout(fadeTimeout);  // Clear timeout if component is unmounted
+    const fadeTimeout = setTimeout(() => setFade(true), 30000);  
+    return () => clearTimeout(fadeTimeout);  
   }, []);
 
   if (!weatherData) return null;
 
   return (
     <div className={`fixed bottom-4 right-4 p-4 bg-white rounded shadow-lg ${fade ? 'opacity-50' : ''}`}>
-      <h2 className="text-xl font-bold">{weatherData.name}</h2>
+      <h2 className="text-xl font-bold">{weatherData.name}</h2>  
       <p>{Math.round(weatherData.main.temp - 273.15)}°C</p>
       <p>{weatherData.weather[0].description}</p>
     </div>

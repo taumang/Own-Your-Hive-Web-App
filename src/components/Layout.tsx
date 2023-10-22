@@ -28,14 +28,14 @@ const Layout = () => {
 
       <div className="flex-1 p-4">
         {activeTab === 'Dashboard' && <Dashboard />}  
-        {/* Render Dashboard component based on activeTab */}
+        
         {activeTab === 'Hives' && 
         <DndProvider backend={HTML5Backend}>
           <Box type="BOX"/>
         <Hive />
         </DndProvider>
         } 
-        {/* ... other main content based on activeTab */}
+        
         {activeTab === 'Apiaries' && <></>}
         {activeTab === 'Logout' && <></>}  
       </div>
