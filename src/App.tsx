@@ -1,4 +1,3 @@
-
 import Layout from './components/Layout';
 import WeatherCard from './Database/Data/WeatherCard';
 
