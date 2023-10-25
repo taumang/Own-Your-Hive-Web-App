@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var express_1 = require("express");
+var express = require("express");
 var mongoose_1 = require("mongoose");
 var hiveService_1 = require("./database/services/hiveService");
 var PORT = process.env.PORT || 3001;
@@ -50,9 +50,9 @@ mongoose_1.default.connect(uri, {
 })
     .then(function () {
     console.log('Connected to MongoDB');
-    var app = (0, express_1.default)();
-    app.use(express_1.default.json());
-    //endpoints here 
+    var app = express();
+    app.use(express.json());
+    //endpoints here
     app.post('/hive', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
         var data, hive, error_1;
         return __generator(this, function (_a) {

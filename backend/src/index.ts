@@ -1,4 +1,6 @@
-import express, {Request, Response} from 'express';
+import express from 'express';
+import helmet from 'helmet'
+import { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import { HiveService } from './database/services/hiveService';
 import { HiveData } from './database/models/HiveInterface';
@@ -18,8 +20,19 @@ mongoose.connect(uri, {
   console.log('Connected to MongoDB');
 
   const app = express();
-  app.use(express.json()); 
-  //endpoints here 
+  app.use(express.json());
+  //endpoints here
+
+  app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: ["'self'", "data:", "http://localhost:3001"],
+        // ... other directives
+      }
+    }
+  }));
 
   app.post('/hive', async (req: Request, res: Response) => {
     try {
@@ -29,7 +42,8 @@ mongoose.connect(uri, {
     } catch (error) {
         res.status(500).send(error);
     }
-});
+  });
+
 
 
 app.get('/hives', async (req: Request, res: Response) => {
